@@ -40,7 +40,7 @@ def get_list_ld():
                     "simSerial" : data["propertySettings.phoneSimSerial"],
                     "macAddress" : data["propertySettings.macAddress"]
             }
-            print(ld_player)
+            
             ld_players.append(ld_player)
 
 

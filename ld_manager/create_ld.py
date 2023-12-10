@@ -83,6 +83,7 @@ def create_ld(number):
                     "advancedSettings.cpuCount": 1,
                     "advancedSettings.memorySize": 1024
             }
+            
             # Merge 2 json data
             contents = {**contents , **config}
             save_json_file(contents,f'leidian{i}.config',config_path)
@@ -91,9 +92,6 @@ def create_ld(number):
         except subprocess.CalledProcessError as e:
             print(f"Error: {e}")
             return None
-
-    for j in new_ldplayers :
-        print(j)
 
     return new_ldplayers
 

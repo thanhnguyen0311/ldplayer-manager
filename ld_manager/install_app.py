@@ -10,3 +10,4 @@ def install_app(app_package_name, name_ld):
 
     except subprocess.CalledProcessError as e:
         print(f"Error: {e}")
+
