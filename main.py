@@ -4,10 +4,6 @@ from ttkbootstrap import Style
 import ttkbootstrap as tb
 
 
-def disable_resize(event=None):
-    return False
-
-
 class App(tk.Tk):
     def __init__(self):
         super().__init__()
