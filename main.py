@@ -14,9 +14,9 @@ class HomePage(tk.Tk):
         self.resizable(False, False)
         self.title("Social Marketing Tool")
         self.geometry("800x600")
-        side_bar = SideBar()
+        side_bar = SideBar(self)
 
 
 if __name__ == '__main__':
-    app = Login()
+    app = HomePage()
     app.mainloop()
