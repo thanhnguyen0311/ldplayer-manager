@@ -16,7 +16,7 @@ class App(tk.Tk):
         menu_frame.pack_propagate(False)
         menu_frame.configure(width=150)
 
-        tk.Label(menu_frame, text="Social Marketing Tool").pack(pady=50)
+        tk.Label(menu_frame, text="Danny").pack(pady=50)
         tk.Button(menu_frame, text="LDManager", width=150, height=2).pack()
         tk.Button(menu_frame, text="Setting", width=150, height=2).pack()
         tk.Button(menu_frame, text="Exit", width=150, height=2).pack()
@@ -25,6 +25,9 @@ class App(tk.Tk):
         main_frame.pack(side=tk.LEFT, fill=tk.Y)
         main_frame.pack_propagate(False)
         main_frame.configure(width=650)
+
+
+
 
 
 if __name__ == '__main__':
