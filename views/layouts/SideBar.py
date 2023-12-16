@@ -17,10 +17,10 @@ class SideBar(tk.Frame):
         self.pack(side=tk.LEFT, fill=tk.Y)
         self.pack_propagate(False)
         self.configure(width=150)
-        main_frame = MainFrame()
+        main_frame = MainFrame(master=None)
 
         img = show_image(self, LOGO_PATH, 80, 80)
-        img.pack(padx=35,pady=50)
+        img.pack(padx=35, pady=50)
 
         self.button_LDManager = tk.Button(self, text="LDManager", width=150, height=2,
                                           command=lambda: main_frame.choose_page(LDManager_Page))
