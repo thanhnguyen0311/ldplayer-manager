@@ -3,7 +3,6 @@ from constants.constants import LDPLAYER_PATH
 from create_ld import open_file
 import sys
 import os
-
 sys.path.append(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
 
 

@@ -3,8 +3,8 @@ from views.pages.LDManager import LDManager_Page
 
 
 class MainFrame(tk.Frame):
-    def __init__(self):
-        super().__init__(highlightbackground='black', highlightthickness=2, bg='white')
+    def __init__(self, master=None):
+        super().__init__(master, highlightbackground='black', highlightthickness=2, bg='white')
         self.pack(side=tk.LEFT, fill=tk.Y)
         self.pack_propagate(False)
         self.configure(width=650)
@@ -17,3 +17,5 @@ class MainFrame(tk.Frame):
     def choose_page(self, page):
         self.delete_pages()
         page(self)
+
+
