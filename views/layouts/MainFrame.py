@@ -1,12 +1,13 @@
 import tkinter as tk
+from tkinter import ttk
+
 from views.pages.LDManager import LDManager_Page
 
 
 class MainFrame(tk.Frame):
-    def __init__(self, master=None):
-        super().__init__(master, highlightbackground='black', highlightthickness=2, bg='white')
-        self.pack(side=tk.LEFT, fill=tk.Y)
-        self.pack_propagate(False)
+    def __init__(self,master):
+        tk.Frame.__init__(self, master)
+        self.Frame = None
         self.configure(width=650)
         self.choose_page(LDManager_Page)
 
@@ -16,6 +17,5 @@ class MainFrame(tk.Frame):
 
     def choose_page(self, page):
         self.delete_pages()
-        page(self)
-
-
+        self.Frame = page(self)
+        self.Frame.pack()
