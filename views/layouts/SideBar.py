@@ -35,4 +35,4 @@ class SideBar(tk.Frame):
 
         self.button_exit = tk.Button(self, text="Exit", width=150, height=2,
                                      command=lambda: close_app(master))
-        self.button_exit.pack(padx=5, pady=5)
+        self.button_exit.pack(padx=5, pady=20, side=tk.BOTTOM)
