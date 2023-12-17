@@ -4,6 +4,7 @@ import sys
 import os
 import json
 from constants.constants import LDPLAYER_PATH, LDCONSOLE_PATH, CLONE_LD_DATA
+
 sys.path.append(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
 
 config_path = os.path.join(LDPLAYER_PATH, "vms", "config")
@@ -41,7 +42,7 @@ def create_ld(number):
             id_list = sorted(id_list, key=lambda x: int(x))
             i = 0
 
-            while (str(i) in id_list):
+            while str(i) in id_list:
                 i = i + 1
 
             subprocess.call([LDCONSOLE_PATH] + ["add"], shell=True)

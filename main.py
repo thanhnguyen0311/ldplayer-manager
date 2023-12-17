@@ -11,7 +11,7 @@ class Login(tk.Tk):
 class HomePage(tk.Tk):
     def __init__(self):
         super().__init__()
-        self.resizable(False, False)
+        # self.resizable(False, False)
         self.title("Social Marketing Tool")
         self.geometry("800x600")
         side_bar = SideBar(self)

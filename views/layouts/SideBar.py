@@ -13,7 +13,7 @@ def close_app(app):
 
 class SideBar(tk.Frame):
     def __init__(self,master, bg='lightblue'):
-        super().__init__(master,bg=bg)
+        super().__init__(master, bg=bg)
         self.pack(side=tk.LEFT, fill=tk.Y)
         self.pack_propagate(False)
         self.configure(width=150)
@@ -27,12 +27,12 @@ class SideBar(tk.Frame):
 
         self.button_LDManager = tk.Button(self, text="LDManager", width=150, height=2,
                                           command=lambda: self.main_frame.choose_page(LDManager_Page))
-        self.button_LDManager.pack()
+        self.button_LDManager.pack(padx=5, pady=5)
 
         self.button_setting = tk.Button(self, text="Setting", width=150, height=2,
                                         command=lambda: self.main_frame.choose_page(Setting))
-        self.button_setting.pack()
+        self.button_setting.pack(padx=5, pady=5)
 
         self.button_exit = tk.Button(self, text="Exit", width=150, height=2,
                                      command=lambda: close_app(master))
-        self.button_exit.pack()
+        self.button_exit.pack(padx=5, pady=5)
