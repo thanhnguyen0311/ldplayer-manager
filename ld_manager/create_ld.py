@@ -4,6 +4,7 @@ import sys
 import os
 import json
 from constants.constants import LDPLAYER_PATH, LDCONSOLE_PATH, CLONE_LD_DATA
+from models.device import Device
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
 
@@ -58,17 +59,18 @@ def create_ld(number):
             if int(i) == 0:
                 name_ld = "LDPlayer"
 
-            new_LDPlayer = {
-                "name": name_ld,
-                "uuid": f"emulator-{5554 + (i * 2)}",
-                "manufacturer": contents["propertySettings.phoneManufacturer"],
-                "model": contents["propertySettings.phoneModel"],
-                "IMEI": contents["propertySettings.phoneIMEI"],
-                "IMSI": contents["propertySettings.phoneIMSI"],
-                "androidId": contents["propertySettings.phoneAndroidId"],
-                "simSerial": contents["propertySettings.phoneSimSerial"],
-                "macAddress": contents["propertySettings.macAddress"]
-            }
+            new_ldplayer = Device(i,
+                                  name_ld,
+                                  contents["propertySettings.phoneIMEI"],
+                                  f"emulator-{5554 + (i * 2)}",
+                                  contents["propertySettings.phoneManufacturer"],
+                                  contents["propertySettings.phoneModel"],
+                                  contents["propertySettings.phoneIMSI"],
+                                  contents["propertySettings.phoneAndroidId"],
+                                  contents["propertySettings.phoneSimSerial"],
+                                  contents["propertySettings.macAddress"],
+                                  ""
+                                  )
 
             config = {
                 "name": name_ld,
@@ -90,7 +92,7 @@ def create_ld(number):
             # Merge 2 json data
             contents = {**contents, **config}
             save_json_file(contents, f'leidian{i}.config', config_path)
-            new_ldplayers.append(new_LDPlayer)
+            new_ldplayers.append(new_ldplayer)
 
         except subprocess.CalledProcessError as e:
             print(f"Error: {e}")
@@ -149,17 +151,17 @@ def clone_ld(data):
             "advancedSettings.memorySize": 1024
         }
 
-        new_LDPlayer = {
-            "name": name_ld,
-            "uuid": f"emulator-{5554 + (i * 2)}",
-            "manufacturer": contents["propertySettings.phoneManufacturer"],
-            "model": contents["propertySettings.phoneModel"],
-            "IMEI": contents["propertySettings.phoneIMEI"],
-            "IMSI": contents["propertySettings.phoneIMSI"],
-            "androidId": contents["propertySettings.phoneAndroidId"],
-            "simSerial": contents["propertySettings.phoneSimSerial"],
-            "macAddress": contents["propertySettings.macAddress"]
-        }
+        new_LDPlayer = Device(i,
+                              name_ld,
+                              data["propertySettings.phoneIMEI"],
+                              f"emulator-{5554 + (i * 2)}",
+                              data["propertySettings.phoneManufacturer"],
+                              data["propertySettings.phoneModel"],
+                              data["propertySettings.phoneIMSI"],
+                              data["propertySettings.phoneAndroidId"],
+                              data["propertySettings.phoneSimSerial"],
+                              data["propertySettings.macAddress"],
+                              data["facebook"])
 
         # Merge 2 json data
         contents = {**contents, **config}

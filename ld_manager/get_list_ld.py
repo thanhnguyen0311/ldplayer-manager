@@ -1,8 +1,11 @@
 import subprocess
 from constants.constants import LDPLAYER_PATH
-from create_ld import open_file
 import sys
 import os
+
+from ld_manager.create_ld import open_file
+from models.device import Device
+
 sys.path.append(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
 
 
@@ -28,22 +31,23 @@ def get_list_ld():
                 data_fb = False
                 data_email = False
 
-            ld_player = {
-                "name": data['name'],
-                "uuid": f"emulator-{5554 + (int(i) * 2)}",
-                "facebook": data_fb,
-                "email": data_email,
-                "manufacturer": data["propertySettings.phoneManufacturer"],
-                "model": data["propertySettings.phoneModel"],
-                "IMEI": data["propertySettings.phoneIMEI"],
-                "IMSI": data["propertySettings.phoneIMSI"],
-                "androidId": data["propertySettings.phoneAndroidId"],
-                "simSerial": data["propertySettings.phoneSimSerial"],
-                "macAddress": data["propertySettings.macAddress"]
-            }
+            name_ld = f"LDPlayer-{i}"
+            if int(i) == 0:
+                name_ld = "LDPlayer"
 
-            ld_players.append(ld_player)
+            device = Device(i,
+                            name_ld,
+                            data["propertySettings.phoneIMEI"],
+                            f"emulator-{5554 + (int(i) * 2)}",
+                            data["propertySettings.phoneManufacturer"],
+                            data["propertySettings.phoneModel"],
+                            data["propertySettings.phoneIMSI"],
+                            data["propertySettings.phoneAndroidId"],
+                            data["propertySettings.phoneSimSerial"],
+                            data["propertySettings.macAddress"],
+                            data_fb)
 
+            ld_players.append(device)
 
     except subprocess.CalledProcessError as e:
         print(f"Error: {e}")
