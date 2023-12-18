@@ -40,18 +40,20 @@ def create_ld(number):
                 else:
                     continue
 
-            id_list = sorted(id_list, key=lambda x: int(x))
             i = 0
 
-            while str(i) in id_list:
-                i = i + 1
+            if len(id_list) > 0:
+                id_list = sorted(id_list, key=lambda x: int(x))
+
+                while str(i) in id_list:
+                    i = i + 1
 
             subprocess.call([LDCONSOLE_PATH] + ["add"], shell=True)
 
-            contents = open_file(f'leidian{i}.config', config_path)
+            contents = open_file(f'leidian{str(i)}.config', config_path)
 
             source_data = os.path.join(LDPLAYER_PATH, "vms", "data.vmdk")
-            destination_data = os.path.join(LDPLAYER_PATH, "vms", f'leidian{i}')
+            destination_data = os.path.join(LDPLAYER_PATH, "vms", f'leidian{str(i)}')
             if CLONE_LD_DATA:
                 shutil.copy(source_data, destination_data)
 

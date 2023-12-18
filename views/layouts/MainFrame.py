@@ -4,7 +4,7 @@ from views.pages.LDManager import LDManager_Page
 
 
 class MainFrame(tk.Frame):
-    def __init__(self,master):
+    def __init__(self, master):
         tk.Frame.__init__(self, master)
         self.Frame = None
         self.configure(width=650)
