@@ -7,7 +7,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
 
 def run_ld(device):
     try:
-        subprocess.call([LDCONSOLE_PATH] + ["launch"] + ["--name"] + [device], shell=True)
+        subprocess.call([LDCONSOLE_PATH] + ["launch"] + ["--name"] + [device.name], shell=True)
         return True
 
     except subprocess.CalledProcessError as e:

@@ -12,7 +12,7 @@ class HomePage(tk.Tk):
     def __init__(self):
         super().__init__()
         self.title("LDManager Tool")
-        self.geometry("800x600")
+        self.geometry("1200x600")
         SideBar(self)
 
 
