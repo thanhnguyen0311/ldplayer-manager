@@ -29,7 +29,7 @@ def save_json_file(data, filename, folder):
 
 def create_ld(number):
     new_ldplayers = []
-    for i in range(number):
+    for num in range(number):
         try:
             id_list = []
             file_list = os.listdir(config_path)
@@ -45,7 +45,7 @@ def create_ld(number):
             if len(id_list) > 0:
                 id_list = sorted(id_list, key=lambda x: int(x))
 
-                while str(i) in id_list:
+                while i in id_list:
                     i = i + 1
 
             subprocess.call([LDCONSOLE_PATH] + ["add"], shell=True)

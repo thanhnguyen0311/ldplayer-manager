@@ -12,13 +12,13 @@ def close_app(app):
 
 
 class SideBar(tk.Frame):
-    def __init__(self,master, bg='lightblue'):
+    def __init__(self, master, bg='lightblue'):
         super().__init__(master, bg=bg)
         self.pack(side=tk.LEFT, fill=tk.Y)
         self.pack_propagate(False)
         self.configure(width=150)
         self.main_frame = MainFrame(master)
-        self.main_frame.pack(side=tk.LEFT, fill=tk.BOTH)
+        self.main_frame.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
         self.border = tk.Label(self, borderwidth=1, relief='solid', padx=0)
         self.border.pack(side=tk.RIGHT,fill=tk.Y)
 

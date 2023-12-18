@@ -1,8 +1,7 @@
 import tkinter as tk
-from tkinter import ttk
 
 
 class Setting(tk.Frame):
-    def __init__(self, master):
-        tk.Frame.__init__(self, master)
+    def __init__(self, master, *args, **kwargs):
+        tk.Frame.__init__(self, master, *args, **kwargs)
         tk.Label(self, text="This is Setting Page").pack(side=tk.LEFT)
