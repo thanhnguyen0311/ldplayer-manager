@@ -1,5 +1,6 @@
 from threading import Thread
-
+import queue
+import time
 import tkinter as tk
 
 from ld_manager.create_ld import create_ld
@@ -12,7 +13,7 @@ from ld_manager.run_ld import run_ld
 class LDManager_Page(tk.Frame):
     def __init__(self, *args, **kwargs):
         tk.Frame.__init__(self, *args, **kwargs)
-
+        self.task_queue = queue.Queue()
         self.data = get_list_ld()
         self.menu_bar = tk.Frame(self)
         self.menu_bar.grid(row=1, column=0, sticky="w", padx=5)
@@ -72,9 +73,11 @@ class LDManager_Page(tk.Frame):
         thread.start()
 
     def threaded_create(self, arg):
-        for i in range(arg):
-            create_ld(1)
-            self.refresh()
+        for i in range(5):
+            # create_ld(1)
+            # self.refresh()
+            print(i)
+            time.sleep(1)
 
     def remove_all(self):
         remove_all_ld()

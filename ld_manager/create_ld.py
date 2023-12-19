@@ -57,14 +57,14 @@ def create_ld(number):
             if CLONE_LD_DATA:
                 shutil.copy(source_data, destination_data)
 
-            name_ld = f"LDPlayer-{i}"
+            name_ld = f"LDPlayer-{str(i)}"
             if int(i) == 0:
                 name_ld = "LDPlayer"
 
             new_ldplayer = Device(i,
                                   name_ld,
                                   contents["propertySettings.phoneIMEI"],
-                                  f"emulator-{5554 + (i * 2)}",
+                                  f"emulator-{str(5554 + (i * 2))}",
                                   contents["propertySettings.phoneManufacturer"],
                                   contents["propertySettings.phoneModel"],
                                   contents["propertySettings.phoneIMSI"],
@@ -76,7 +76,7 @@ def create_ld(number):
 
             config = {
                 "name": name_ld,
-                "uuid": f"emulator-{5554 + (i * 2)}",
+                "uuid": f"emulator-{str(5554 + (i * 2))}",
                 "facebook": False,
                 "email": False,
                 "basicSettings.rootMode": True,
@@ -93,7 +93,7 @@ def create_ld(number):
 
             # Merge 2 json data
             contents = {**contents, **config}
-            save_json_file(contents, f'leidian{i}.config', config_path)
+            save_json_file(contents, f'leidian{str(i)}.config', config_path)
             new_ldplayers.append(new_ldplayer)
 
         except subprocess.CalledProcessError as e:
@@ -122,7 +122,7 @@ def clone_ld(data):
 
         subprocess.call([LDCONSOLE_PATH] + ["add"], shell=True)
 
-        name_ld = f"LDPlayer-{i}"
+        name_ld = f"LDPlayer-{str(i)}"
         if int(i) == 0:
             name_ld = "LDPlayer"
 
@@ -138,7 +138,7 @@ def clone_ld(data):
 
         config = {
             "name": name_ld,
-            "uuid": f"emulator-{5554 + (i * 2)}",
+            "uuid": f"emulator-{str(5554 + (i * 2))}",
             "facebook": "",
             "email": "",
             "basicSettings.rootMode": True,
@@ -153,10 +153,10 @@ def clone_ld(data):
             "advancedSettings.memorySize": 1024
         }
 
-        new_LDPlayer = Device(i,
+        new_LDPlayer = Device(str(i),
                               name_ld,
                               data["propertySettings.phoneIMEI"],
-                              f"emulator-{5554 + (i * 2)}",
+                              f"emulator-{str(5554 + (i * 2))}",
                               data["propertySettings.phoneManufacturer"],
                               data["propertySettings.phoneModel"],
                               data["propertySettings.phoneIMSI"],
@@ -167,7 +167,7 @@ def clone_ld(data):
 
         # Merge 2 json data
         contents = {**contents, **config}
-        save_json_file(contents, f'leidian{i}.config', config_path)
+        save_json_file(contents, f'leidian{str(i)}.config', config_path)
 
     except subprocess.CalledProcessError as e:
         print(f"Error: {e}")
